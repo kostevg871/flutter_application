@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_apps/movies/widgets/main_screen/main_screen_widget.dart';
 
 import 'widgets/auth/auth_widgets.dart';
 
@@ -16,7 +17,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: AuthWidgets(),
+      routes: {
+        '/auth': (context) => AuthWidgets(),
+        '/main_screen': (context) => MainScreenWidget(),
+      },
+      initialRoute: '/auth',
+      // home: AuthWidgets(),
     );
   }
 }
