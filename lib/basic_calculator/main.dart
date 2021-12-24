@@ -8,7 +8,7 @@ void main() {
 }
 
 class CalcApp extends StatefulWidget {
-  const CalcApp({Key key}) : super(key: key);
+  const CalcApp({Key? key}) : super(key: key);
 
   @override
   CalcAppState createState() => CalcAppState();

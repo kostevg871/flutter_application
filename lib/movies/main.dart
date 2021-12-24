@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_apps/movies/theme/app_colors.dart';
 import 'package:flutter_apps/movies/widgets/main_screen/main_screen_widget.dart';
 
 import 'widgets/auth/auth_widgets.dart';
@@ -13,9 +14,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        appBarTheme: AppBarTheme(color: const Color.fromRGBO(3, 37, 65, 1)),
+        appBarTheme: AppBarTheme(color: AppColors.mainDarkBlue),
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: AppColors.mainDarkBlue,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
+        ),
       ),
       routes: {
         '/auth': (context) => AuthWidgets(),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
 class DetailsPage extends StatefulWidget {
-  const DetailsPage({Key key}) : super(key: key);
+  const DetailsPage({Key? key}) : super(key: key);
 
   @override
   _DetailsPageState createState() => _DetailsPageState();

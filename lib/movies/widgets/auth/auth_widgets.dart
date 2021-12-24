@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_apps/movies/theme/button_style.dart';
 
 class AuthWidgets extends StatefulWidget {
-  const AuthWidgets({Key key}) : super(key: key);
+  const AuthWidgets({Key? key}) : super(key: key);
 
   @override
   _AuthWidgetsState createState() => _AuthWidgetsState();
@@ -28,7 +28,7 @@ class _AuthWidgetsState extends State<AuthWidgets> {
 }
 
 class _HeaderWidget extends StatelessWidget {
-  const _HeaderWidget({Key key}) : super(key: key);
+  const _HeaderWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,16 +65,16 @@ class _HeaderWidget extends StatelessWidget {
 }
 
 class _FormWidget extends StatefulWidget {
-  const _FormWidget({Key key}) : super(key: key);
+  const _FormWidget({Key? key}) : super(key: key);
 
   @override
   _FormWidgetState createState() => _FormWidgetState();
 }
 
 class _FormWidgetState extends State<_FormWidget> {
-  final _loginTextController = TextEditingController();
-  final _passwordTextController = TextEditingController();
-  String errorText;
+  final _loginTextController = TextEditingController(text: "admin");
+  final _passwordTextController = TextEditingController(text: "admin");
+  String? errorText;
 
   void _auth() {
     final login = _loginTextController.text;

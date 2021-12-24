@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CalcButton extends StatelessWidget {
-  final String text;
-  final int fillColor;
+  final String? text;
+  final int? fillColor;
   final int textColor;
   final double textSize;
-  final Function callback;
+  final Function? callback;
 
   const CalcButton({
-    Key key,
+    Key? key,
     this.text,
     this.fillColor,
     this.textColor = 0xFFFFFFFF,
@@ -29,17 +29,17 @@ class CalcButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(50.0),
           ),
           onPressed: () {
-            callback(text);
+            callback!(text);
           },
           child: Text(
-            text,
+            text!,
             style: GoogleFonts.rubik(
               textStyle: TextStyle(
                 fontSize: textSize,
               ),
             ),
           ),
-          color: fillColor != null ? Color(fillColor) : null,
+          color: fillColor != null ? Color(fillColor!) : null,
           textColor: Color(textColor),
         ),
       ),
