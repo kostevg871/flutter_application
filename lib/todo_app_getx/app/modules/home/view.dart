@@ -1,0 +1,32 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_apps/todo_app_getx/app/core/utils/extansions.dart';
+import 'package:flutter_apps/todo_app_getx/app/modules/home/controller.dart';
+import 'package:get/get.dart';
+
+class HomeView extends GetView<HomeController> {
+  const HomeView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: ListView(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(4.0.wp),
+                child: Text(
+                  "My List",
+                  style: TextStyle(
+                    fontSize: 24.0.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
