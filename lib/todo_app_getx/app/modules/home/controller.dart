@@ -12,6 +12,8 @@ class HomeController extends GetxController {
   final scrollCtrl = ScrollController();
   final tasks = <Task>[].obs;
   final chipIndex = 0.obs;
+  final deleting = false.obs;
+  final task = Rx<Task?>(null);
 
   @override
   void onInit() {
@@ -22,11 +24,20 @@ class HomeController extends GetxController {
 
   @override
   void onClose() {
+    editCtrl.dispose();
     super.onClose();
   }
 
   void changeChipIndex(int value) {
     chipIndex.value = value;
+  }
+
+  void changeDeleting(bool value) {
+    deleting.value = value;
+  }
+
+  void changeTask(Task? select) {
+    task.value = select;
   }
 
   bool addTask(Task task) {
@@ -35,5 +46,27 @@ class HomeController extends GetxController {
     }
     tasks.add(task);
     return true;
+  }
+
+  void deleteTask(Task task) {
+    tasks.remove(task);
+  }
+
+  updateTask(Task task, String title) {
+    var todos = task.todos ?? [];
+    if (containTodo(todos, title)) {
+      return false;
+    }
+    var todo = {'title': title, 'done': false};
+    todos.add(todo);
+    var newTask = task.copyWith(todos: todos);
+    int oldInx = tasks.indexOf(task);
+    tasks[oldInx] = newTask;
+    tasks.refresh();
+    return true;
+  }
+
+  bool containTodo(List<dynamic> todos, title) {
+    return todos.any((element) => element["title"] == title);
   }
 }
