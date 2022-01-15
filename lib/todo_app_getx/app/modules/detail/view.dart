@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_apps/todo_app_getx/app/core/utils/extansions.dart';
 import 'package:flutter_apps/todo_app_getx/app/modules/detail/widgets/doing_list.dart';
+import 'package:flutter_apps/todo_app_getx/app/modules/detail/widgets/done_list.dart';
 import 'package:flutter_apps/todo_app_getx/app/modules/home/controller.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -136,6 +137,7 @@ class DetailsPage extends StatelessWidget {
               ),
             ),
             DoingList(),
+            DoneList(),
           ],
         ),
       ),
