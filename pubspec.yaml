@@ -38,6 +38,7 @@ dependencies:
   dotted_border: ^2.0.0+2
   step_progress_indicator: ^1.0.2
   intl: ^0.17.0
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -81,6 +82,13 @@ flutter:
           - asset: assets/coffee_shop/Nunito-Regular.ttf
           - asset: assets/coffee_shop/Nunito-Light.ttf
             weight: 300
+      - family: avenir
+        fonts:
+          - asset: assets/e_commerce/avenir_ff/AvenirLTStd-Book.otf
+          - asset: assets/e_commerce/avenir_ff/AvenirLTStd-Roman.otf
+            weight: 300
+          - asset: assets/e_commerce/avenir_ff/AvenirLTStd-Black.otf
+            weight: 700
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
