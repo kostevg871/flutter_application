@@ -15,7 +15,7 @@ class CustomAppBarECommerce extends StatelessWidget with PreferredSizeWidget {
       elevation: 0,
       title: Container(
         color: Colors.black,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         child: Text(title,
             style: Theme.of(context)
                 .textTheme

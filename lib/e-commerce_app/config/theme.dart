@@ -30,6 +30,11 @@ TextTheme textTheme() {
       fontSize: 16,
       fontWeight: FontWeight.bold,
     ),
+    headline5: TextStyle(
+      color: Colors.black,
+      fontSize: 14,
+      fontWeight: FontWeight.bold,
+    ),
     headline6: TextStyle(
       color: Colors.black,
       fontSize: 14,

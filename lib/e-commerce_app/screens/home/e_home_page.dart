@@ -21,19 +21,37 @@ class EHomeScreen extends StatelessWidget {
         title: "E-commerce app",
       ),
       bottomNavigationBar: ECustomBottomBar(),
-      body: Container(
-          child: CarouselSlider(
-        options: CarouselOptions(
-          aspectRatio: 1.5,
-          viewportFraction: 0.9,
-          enlargeStrategy: CenterPageEnlargeStrategy.height,
-          enlargeCenterPage: true,
-          enableInfiniteScroll: false,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+                child: CarouselSlider(
+              options: CarouselOptions(
+                aspectRatio: 1.5,
+                viewportFraction: 0.9,
+                enlargeStrategy: CenterPageEnlargeStrategy.height,
+                enlargeCenterPage: true,
+                enableInfiniteScroll: false,
+              ),
+              items: Category.categories
+                  .map((category) => HeroCarouselCard(category: category))
+                  .toList(),
+            )),
+            SectionTitle(title: "RECOMMENDED"),
+            ProductCarousel(
+              products: Product.products
+                  .where((product) => product.isRecommended)
+                  .toList(),
+            ),
+            SectionTitle(title: "MOST POPULAR"),
+            ProductCarousel(
+              products: Product.products
+                  .where((product) => product.isPopular)
+                  .toList(),
+            ),
+          ],
         ),
-        items: Category.categories
-            .map((category) => HeroCarouselCard(category: category))
-            .toList(),
-      )),
+      ),
     );
   }
 }
