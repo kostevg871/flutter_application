@@ -41,9 +41,9 @@ TextTheme textTheme() {
       fontWeight: FontWeight.normal,
     ),
     bodyText1: TextStyle(
-      color: Colors.black,
+      color: Colors.grey,
       fontSize: 12,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.normal,
     ),
     bodyText2: TextStyle(
       color: Colors.black,

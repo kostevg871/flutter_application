@@ -16,7 +16,7 @@ class AppRouter {
       case ECatalogScreen.routeName:
         return ECatalogScreen.route(category: settings.arguments as Category);
       case EProductScreen.routeName:
-        return EProductScreen.route();
+        return EProductScreen.route(product: settings.arguments as Product);
       case EWishlistScreen.routeName:
         return EWishlistScreen.route();
 

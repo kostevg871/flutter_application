@@ -24,8 +24,7 @@ class EHomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-                child: CarouselSlider(
+            CarouselSlider(
               options: CarouselOptions(
                 aspectRatio: 1.5,
                 viewportFraction: 0.9,
@@ -36,7 +35,7 @@ class EHomeScreen extends StatelessWidget {
               items: Category.categories
                   .map((category) => HeroCarouselCard(category: category))
                   .toList(),
-            )),
+            ),
             SectionTitle(title: "RECOMMENDED"),
             ProductCarousel(
               products: Product.products
