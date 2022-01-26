@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_apps/e-commerce_app/models/models.dart';
+import 'package:flutter_apps/e-commerce_app/models/cart_models.dart';
 import 'package:flutter_apps/e-commerce_app/widgets/e_widgets.dart';
 
 class ECartScreen extends StatelessWidget {
@@ -48,7 +48,7 @@ class ECartScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Add \$20.0 for FREE Delivery",
+                      Cart().freeDeliveryString,
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     ElevatedButton(
@@ -70,7 +70,14 @@ class ECartScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                CartProductCard(product: Product.products[0]),
+                SizedBox(
+                  height: 330,
+                  child: ListView.builder(
+                      itemCount: Cart().products.length,
+                      itemBuilder: (context, index) {
+                        return CartProductCard(product: Cart().products[index]);
+                      }),
+                ),
               ],
             ),
             Column(
@@ -86,7 +93,7 @@ class ECartScreen extends StatelessWidget {
                         children: [
                           Text("SUBTOTAL",
                               style: Theme.of(context).textTheme.headline5),
-                          Text("\$5.98",
+                          Text("\$${Cart().subtotalString}",
                               style: Theme.of(context).textTheme.headline5),
                         ],
                       ),
@@ -96,7 +103,7 @@ class ECartScreen extends StatelessWidget {
                         children: [
                           Text("DELIVERY FREE",
                               style: Theme.of(context).textTheme.headline5),
-                          Text("\$2.98",
+                          Text("\$${Cart().deliveryString}",
                               style: Theme.of(context).textTheme.headline5),
                         ],
                       ),
@@ -124,12 +131,12 @@ class ECartScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("DELIVERY FREE",
+                            Text("TOTAL",
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline5!
                                     .copyWith(color: Colors.white)),
-                            Text("\$12.98",
+                            Text("\$${Cart().totalString}",
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline5!
