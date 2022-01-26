@@ -11,6 +11,8 @@ class AppRouter {
         return EHomeScreen.route();
       case EHomeScreen.routeName:
         return EHomeScreen.route();
+      case SplashScreen.routeName:
+        return SplashScreen.route();
       case ECartScreen.routeName:
         return ECartScreen.route();
       case ECatalogScreen.routeName:
