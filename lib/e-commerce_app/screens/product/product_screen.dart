@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_apps/e-commerce_app/blocs/wishlist/wishlist_bloc.dart';
 import 'package:flutter_apps/e-commerce_app/models/models.dart';
@@ -44,9 +43,9 @@ class EProductScreen extends StatelessWidget {
                         context
                             .read<WishlistBloc>()
                             .add(AddWishlistProduct(product));
-                        final snackbar =
+                        final snackBar =
                             SnackBar(content: Text("Add to your Wishlist!!"));
-                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       },
                       icon: Icon(
                         Icons.favorite,

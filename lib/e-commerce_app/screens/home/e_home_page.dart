@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_apps/e-commerce_app/models/models.dart';
 import 'package:flutter_apps/e-commerce_app/widgets/e_widgets.dart';
+import 'package:flutter_apps/e-commerce_app/widgets/section_title.dart';
 
 class EHomeScreen extends StatelessWidget {
   static const String routeName = "/";
