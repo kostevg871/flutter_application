@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_apps/e-commerce_app/blocs/cart/cart_bloc.dart';
 import 'package:flutter_apps/e-commerce_app/blocs/wishlist/wishlist_bloc.dart';
@@ -8,7 +9,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'config/theme.dart';
 import 'screens/home/e_home_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(AppEcommerce());
 }
 
