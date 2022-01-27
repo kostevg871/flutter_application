@@ -8,12 +8,12 @@ class ProductRepository extends BaseProductRepository {
       : _firebaseFirestore = firebaseFirestore ?? FirebaseFirestore.instance;
 
   @override
-  Stream<List<Product>> getAllProduct() {
+  Stream<List<Product>> getAllProducts() {
     return _firebaseFirestore
         .collection('products')
         .snapshots()
         .map((snapshot) {
-      return snapshot.docs.map((e) => Product.fromSnapshot(e)).toList();
+      return snapshot.docs.map((doc) => Product.fromSnapshot(doc)).toList();
     });
   }
 }
