@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_apps/e-commerce_app/blocs/category/category_bloc.dart';
 import 'package:flutter_apps/e-commerce_app/models/models.dart';
 import 'package:flutter_apps/e-commerce_app/widgets/e_widgets.dart';
 import 'package:flutter_apps/e-commerce_app/widgets/section_title.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EHomeScreen extends StatelessWidget {
   static const String routeName = "/";
@@ -25,17 +27,30 @@ class EHomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CarouselSlider(
-              options: CarouselOptions(
-                aspectRatio: 1.5,
-                viewportFraction: 0.9,
-                enlargeStrategy: CenterPageEnlargeStrategy.height,
-                enlargeCenterPage: true,
-                enableInfiniteScroll: false,
-              ),
-              items: Category.categories
-                  .map((category) => HeroCarouselCard(category: category))
-                  .toList(),
+            BlocBuilder<CategoryBloc, CategoryState>(
+              builder: (context, state) {
+                if (state is CategoryLoading) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (state is CategoryLoaded) {
+                  return CarouselSlider(
+                    options: CarouselOptions(
+                      aspectRatio: 1.5,
+                      viewportFraction: 0.9,
+                      enlargeStrategy: CenterPageEnlargeStrategy.height,
+                      enlargeCenterPage: true,
+                      enableInfiniteScroll: false,
+                    ),
+                    items: state.categories
+                        .map((category) => HeroCarouselCard(category: category))
+                        .toList(),
+                  );
+                } else {
+                  return Text("Something wrong");
+                }
+              },
             ),
             SectionTitle(title: "RECOMMENDED"),
             ProductCarousel(
