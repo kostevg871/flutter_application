@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_apps/e-commerce_app/blocs/cart/cart_bloc.dart';
+import 'package:flutter_apps/e-commerce_app/widgets/custom_app_bar.dart';
 import 'package:flutter_apps/e-commerce_app/widgets/e_widgets.dart';
+import 'package:flutter_apps/e-commerce_app/widgets/order_summary.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ECartScreen extends StatelessWidget {
@@ -20,23 +22,8 @@ class ECartScreen extends StatelessWidget {
         appBar: CustomAppBarECommerce(
           title: "Cart",
         ),
-        bottomNavigationBar: BottomAppBar(
-          color: Colors.black,
-          child: Container(
-            height: 70,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.white),
-                    onPressed: () {},
-                    child: Text(
-                      "GO TO CHECKOUT",
-                      style: Theme.of(context).textTheme.headline3,
-                    ))
-              ],
-            ),
-          ),
+        bottomNavigationBar: CustomNavBar(
+          screen: '/cart',
         ),
         body: BlocBuilder<CartBloc, CartState>(
           builder: (context, state) {
@@ -101,87 +88,7 @@ class ECartScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Column(
-                      children: [
-                        Divider(thickness: 2),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 10),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text("SUBTOTAL",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline5),
-                                  Text("\$${state.cart.subtotalString}",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline5),
-                                ],
-                              ),
-                              SizedBox(height: 10),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text("DELIVERY FREE",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline5),
-                                  Text("\$${state.cart.deliveryString}",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline5),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Stack(
-                          children: [
-                            Container(
-                              height: 60,
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                color: Colors.black.withAlpha(50),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.all(5.0),
-                              height: 50,
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                color: Colors.black,
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("TOTAL",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline5!
-                                            .copyWith(color: Colors.white)),
-                                    Text("\$${state.cart.totalString}",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline5!
-                                            .copyWith(color: Colors.white)),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                    OrderSummary(),
                   ],
                 ),
               );

@@ -7,6 +7,7 @@ import 'package:flutter_apps/e-commerce_app/blocs/wishlist/wishlist_bloc.dart';
 import 'package:flutter_apps/e-commerce_app/config/app_router.dart';
 import 'package:flutter_apps/e-commerce_app/repositories/category/category_repository.dart';
 import 'package:flutter_apps/e-commerce_app/repositories/product/product_repository.dart';
+import 'package:flutter_apps/e-commerce_app/screens/checkout/checkout.dart';
 import 'package:flutter_apps/e-commerce_app/screens/screens.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,7 +38,7 @@ class AppEcommerce extends StatelessWidget {
         title: "E-commerce",
         theme: theme(),
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: SplashScreen.routeName,
+        initialRoute: CheckoutScreen.routeName,
         home: EHomeScreen(),
       ),
     );
