@@ -43,9 +43,14 @@ dependencies:
   flutter_bloc: ^7.0.0
   firebase_core: ^1.2.1
   cloud_firestore: ^2.2.1
-
-
-
+  #e-commerce backend:
+  #get: ^4.6.1
+  #firebase_core: ^1.2.1
+  #cloud_firestore: ^2.2.1
+  charts_flutter: ^0.12.0
+  firebase_storage: ^10.1.0
+  image_picker: ^0.8.4+4
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
