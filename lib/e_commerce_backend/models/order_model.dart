@@ -72,7 +72,7 @@ class Order extends Equatable {
     return Order(
       id: snapshot['id'],
       customerId: snapshot['customerId'],
-      productIds: List<int>.from(snapshot['deliveryFee']),
+      productIds: List<int>.from(snapshot['productIds']),
       deliveryFee: snapshot['deliveryFee'],
       subtotal: snapshot['subtotal'],
       total: snapshot['total'],

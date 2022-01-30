@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_apps/e_commerce_backend/controller/order_controller.dart';
 import 'package:flutter_apps/e_commerce_backend/models/order_model.dart';
 import 'package:flutter_apps/e_commerce_backend/models/products_models_back.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class OrderScreen extends StatelessWidget {
-  const OrderScreen({Key? key}) : super(key: key);
+  OrderScreen({Key? key}) : super(key: key);
+
+  final OrderController orderController = Get.put(OrderController());
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +20,15 @@ class OrderScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: ListView.builder(
-                itemCount: Order.orders.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return OrderCard(order: Order.orders[index]);
-                }),
+          Obx(
+            () => Expanded(
+              child: ListView.builder(
+                  itemCount: orderController.pendingOrders.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return OrderCard(
+                        order: orderController.pendingOrders[index]);
+                  }),
+            ),
           ),
         ],
       ),
@@ -30,11 +37,13 @@ class OrderScreen extends StatelessWidget {
 }
 
 class OrderCard extends StatelessWidget {
-  final Order order;
-  const OrderCard({
+  OrderCard({
     Key? key,
     required this.order,
   }) : super(key: key);
+
+  final Order order;
+  final OrderController orderController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -148,18 +157,38 @@ class OrderCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  order.isAccepted
+                      ? ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.black,
+                              minimumSize: Size(150, 40)),
+                          onPressed: () {
+                            orderController.updateOrder(
+                                order, "isDelivered", !order.isDelivered);
+                          },
+                          child: Text(
+                            "Delivery",
+                            style: TextStyle(fontSize: 12),
+                          ))
+                      : ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.black,
+                              minimumSize: Size(150, 40)),
+                          onPressed: () {
+                            orderController.updateOrder(
+                                order, "isAccepted", !order.isDelivered);
+                          },
+                          child: Text(
+                            "Accept",
+                            style: TextStyle(fontSize: 12),
+                          )),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           primary: Colors.black, minimumSize: Size(150, 40)),
-                      onPressed: () {},
-                      child: Text(
-                        "Accept",
-                        style: TextStyle(fontSize: 12),
-                      )),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.black, minimumSize: Size(150, 40)),
-                      onPressed: () {},
+                      onPressed: () {
+                        orderController.updateOrder(
+                            order, "isCanceled", !order.isCanceled);
+                      },
                       child: Text(
                         "Cancel",
                         style: TextStyle(fontSize: 12),
