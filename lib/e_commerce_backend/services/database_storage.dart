@@ -1,9 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_apps/e_commerce_backend/controller/orders_starts_model.dart';
 import 'package:flutter_apps/e_commerce_backend/models/order_model.dart';
 import 'package:flutter_apps/e_commerce_backend/models/products_models_back.dart';
 
 class DatabaseStorage {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+
+  Future<List<OrderStats>> getOrderStats() {
+    return _firebaseFirestore
+        .collection("orders_stats")
+        .orderBy("dateTime")
+        .get()
+        .then((querySnapshot) => querySnapshot.docs
+            .asMap()
+            .entries
+            .map((e) => OrderStats.fromSnapshot(e.value, e.key))
+            .toList());
+  }
 
   Stream<List<Product>> getProducts() {
     return _firebaseFirestore.collection("products").snapshots().map((snap) {
