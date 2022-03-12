@@ -95,7 +95,7 @@ class ProductCard extends StatelessWidget {
                                 onPressed: () {
                                   context
                                       .read<CartBloc>()
-                                      .add(CartProductAdded(product));
+                                      .add(AddProduct(product));
                                 },
                                 icon: Icon(
                                   Icons.add_circle,

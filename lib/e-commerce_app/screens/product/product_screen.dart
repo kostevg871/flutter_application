@@ -59,7 +59,7 @@ class EProductScreen extends StatelessWidget {
                   return ElevatedButton(
                       style: ElevatedButton.styleFrom(primary: Colors.white),
                       onPressed: () {
-                        context.read<CartBloc>().add(CartProductAdded(product));
+                        context.read<CartBloc>().add(AddProduct(product));
                         Navigator.pushNamed(context, "/cart");
                       },
                       child: Text(
